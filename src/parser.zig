@@ -272,7 +272,7 @@ fn substitute_variables(
     name: []const u8,
     output: anytype,
 ) !void {
-    if (std.os.getenv(name)) |value| {
+    if (std.posix.getenv(name)) |value| {
         _ = try output.write(value);
     } else {
         const value = ctx.get(name) orelse "";
@@ -315,7 +315,7 @@ test "test parse" {
     var parser = LineParser.init(allocator);
     defer parser.deinit();
 
-    var it = std.mem.split(u8, input, "\n");
+    var it = std.mem.splitSequence(u8, input, "\n");
     var i: usize = 0;
     while (it.next()) |line| {
         var buf = std.ArrayList(u8).init(allocator);

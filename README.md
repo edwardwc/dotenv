@@ -1,5 +1,7 @@
 <h1 align="center"> dotenv 🌴 </h1>
 
+This is a fork of dying-will-bullet/dotenv to support Zig 0.14. The change can be found in DIFF.md.
+
 [![CI](https://github.com/dying-will-bullet/dotenv/actions/workflows/ci.yaml/badge.svg)](https://github.com/dying-will-bullet/dotenv/actions/workflows/ci.yaml)
 [![codecov](https://codecov.io/gh/dying-will-bullet/dotenv/branch/master/graph/badge.svg?token=D8DHON0VE5)](https://codecov.io/gh/dying-will-bullet/dotenv)
 ![](https://img.shields.io/badge/language-zig-%23ec915c)
@@ -9,8 +11,6 @@ Storing configuration in the environment separate from code is based on The
 [Twelve-Factor](http://12factor.net/config) App methodology.
 
 This library is a Zig language port of [nodejs dotenv](https://github.com/motdotla/dotenv).
-
-Test with Zig 0.12.0-dev.1664+8ca4a5240.
 
 ## Quick Start
 
@@ -36,7 +36,7 @@ pub fn main() !void {
 }
 ```
 
-**Since writing to `std.os.environ` requires a C `setenv` call, linking with C is necessary.**
+**Since writing to `std.posix.environ` requires a C `setenv` call, linking with C is necessary.**
 
 If you only want to read and parse the contents of the `.env` file, you can try the following.
 
@@ -105,8 +105,8 @@ Add `dotenv` as dependency in `build.zig.zon`:
     .version = "0.1.0",
     .dependencies = .{
        .dotenv = .{
-           .url = "https://github.com/dying-will-bullet/dotenv/archive/refs/tags/v0.1.1.tar.gz",
-           .hash = "1220f0f6736020856641d3644ef44f95ce21f3923d5dae7f9ac8658187574d36bcb8"
+           .url = "https://github.com/edwardwc/dotenv/archive/refs/tags/v0.0.42.tar.gz",
+           .hash = "1220e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
        },
     },
     .paths = .{""}
